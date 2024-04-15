@@ -76,3 +76,10 @@
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-s);
 }
+
+.error {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
+  color: var(--color-danger-300);
+}
