@@ -1,4 +1,7 @@
 export * from './button'
 export * from './card'
 export * from './checkbox'
+export * from './dropdown'
+export * from './iconButton'
+export * from './input'
 export * from './typography'
