@@ -1,0 +1,40 @@
+.root {
+  background-color: var(--color-dark-500);
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 117rem;
+  height: 6rem;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.logo {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.userName {
+  padding-right: 2px;
+  border-bottom: 2px dashed var(--color-light-100);
+}
+
+.profileInfoWrapper {
+  display: flex;
+  gap: 1.4rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdownItemWrapper {
+  padding-right: 2.8rem;
+}
