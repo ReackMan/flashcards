@@ -13,3 +13,21 @@ export enum TypographyVariant {
   Subtitle1 = 'subtitle1',
   Subtitle2 = 'subtitle2',
 }
+
+export enum ButtonVariant {
+  Link = 'link',
+  Primary = 'primary',
+  Secondary = 'secondary',
+  Tertiary = 'tertiary',
+}
+
+export enum Route {
+  CreateNewPassword = '/create-new-password',
+  Decks = '/decks',
+  ForgotPassword = '/forgot-password',
+  Main = '/',
+  NotFound = '/not-found',
+  Profile = '/profile',
+  SignIn = '/sign-in',
+  SignUp = '/sign-up',
+}
