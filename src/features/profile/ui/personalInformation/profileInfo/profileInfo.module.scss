@@ -1,0 +1,15 @@
+.root {
+  text-align: center;
+
+  .userNameWrapper {
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .email {
+    margin-bottom: 1.3rem;
+    color: var(--color-dark-100);
+  }
+}
