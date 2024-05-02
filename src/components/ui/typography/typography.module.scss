@@ -1,8 +1,8 @@
 .typography {
-  all: unset;
   box-sizing: border-box;
+  margin: 0;
   font-family: var(--font-family-primary);
-  color: inherit;
+  color: var(--color-light-100);
 }
 
 .h1 {
@@ -65,16 +65,26 @@
   line-height: var(--line-height-s);
 }
 
-.link1 {
+.link1,
+.link1:visited {
+  cursor: pointer;
+
   font-size: var(--font-size-s);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-m);
+  color: var(--color-info-500);
+  text-decoration: underline;
 }
 
-.link2 {
+.link2,
+.link2:visited {
+  cursor: pointer;
+
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-s);
+  color: var(--color-info-500);
+  text-decoration: underline;
 }
 
 .error {
