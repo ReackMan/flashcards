@@ -18,7 +18,6 @@ export enum ButtonVariant {
   Link = 'link',
   Primary = 'primary',
   Secondary = 'secondary',
-  Tertiary = 'tertiary',
 }
 
 export enum Route {
