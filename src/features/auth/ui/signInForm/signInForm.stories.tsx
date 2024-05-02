@@ -1,6 +1,5 @@
+import { SignInForm } from '@/features'
 import { Meta, StoryObj } from '@storybook/react'
-
-import { SignInForm } from './signInForm'
 
 const meta: Meta<typeof SignInForm> = {
   component: SignInForm,

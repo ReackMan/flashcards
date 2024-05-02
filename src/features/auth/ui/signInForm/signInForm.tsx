@@ -1,3 +1,4 @@
+import { ReactElement } from 'react'
 import { Link } from 'react-router-dom'
 
 import { ButtonVariant, Route, TypographyVariant } from '@/common'
@@ -12,7 +13,7 @@ type Props = {
   onSubmit: (data: SignInFormValues) => void
 }
 
-export const SignInForm = ({ onSubmit }: Props) => {
+export const SignInForm = ({ onSubmit }: Props): ReactElement => {
   const { control, handleSubmit } = useSignInForm()
 
   return (
