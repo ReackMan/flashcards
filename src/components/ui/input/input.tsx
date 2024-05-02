@@ -1,4 +1,11 @@
-import { ChangeEvent, ComponentPropsWithoutRef, KeyboardEvent, ReactNode, useState } from 'react'
+import {
+  ChangeEvent,
+  ComponentPropsWithoutRef,
+  KeyboardEvent,
+  ReactNode,
+  forwardRef,
+  useState,
+} from 'react'
 
 import { ClosedEyeIcon, OpenEyeIcon } from '@/assets'
 import { TypographyVariant } from '@/common'
@@ -17,82 +24,88 @@ export type InputProps = {
   rightIcon?: ReactNode
 } & ComponentPropsWithoutRef<'input'>
 
-export const Input = ({
-  className,
-  error,
-  label,
-  leftIcon,
-  onChange,
-  onChangeValue,
-  onEnter,
-  onKeyDown,
-  onLeftIconClickHandler,
-  onRightIconClickHandler,
-  rightIcon,
-  type,
-  ...restProps
-}: InputProps) => {
-  const [isVisiblePassword, setIsVisiblePassword] = useState(false)
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  (
+    {
+      className,
+      error,
+      label,
+      leftIcon,
+      onChange,
+      onChangeValue,
+      onEnter,
+      onKeyDown,
+      onLeftIconClickHandler,
+      onRightIconClickHandler,
+      rightIcon,
+      type,
+      ...restProps
+    },
+    ref
+  ) => {
+    const [isVisiblePassword, setIsVisiblePassword] = useState(false)
 
-  const setVisiblePasswordHandler = () => {
-    setIsVisiblePassword(prevState => !prevState)
-  }
-
-  const onChangeValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e)
-    onChangeValue?.(e.currentTarget.value)
-  }
-
-  const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === 'Enter') {
-      onEnter?.(e)
+    const setVisiblePasswordHandler = () => {
+      setIsVisiblePassword(prevState => !prevState)
     }
-    onKeyDown?.(e)
-  }
 
-  const inputType = type === 'password' && isVisiblePassword ? 'text' : type
-  const dynamicRightIcon = getRightInputIcon(type || 'text', isVisiblePassword, rightIcon)
+    const onChangeValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
+      onChange?.(e)
+      onChangeValue?.(e.currentTarget.value)
+    }
 
-  return (
-    <div className={`${s.root} ${className}`}>
-      {label && (
-        <Typography
-          as={'label'}
-          className={`${s.label} ${restProps.disabled && s.disabledText}`}
-          variant={TypographyVariant.Body2}
-        >
-          {label}
-        </Typography>
-      )}
-      <div
-        className={`${s.inputWrapper}
+    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+      if (e.code === 'Enter') {
+        onEnter?.(e)
+      }
+      onKeyDown?.(e)
+    }
+
+    const inputType = type === 'password' && isVisiblePassword ? 'text' : type
+    const dynamicRightIcon = getRightInputIcon(type || 'text', isVisiblePassword, rightIcon)
+
+    return (
+      <div className={`${s.root} ${className}`}>
+        {label && (
+          <Typography
+            as={'label'}
+            className={`${s.label} ${restProps.disabled && s.disabledText}`}
+            variant={TypographyVariant.Body2}
+          >
+            {label}
+          </Typography>
+        )}
+        <div
+          className={`${s.inputWrapper}
             ${!!restProps.value && s.active}
             ${restProps.disabled && s.disabled}
             ${!!error && s.error}`}
-        tabIndex={0}
-      >
-        <input
-          className={`${s.input} ${!!leftIcon && s.isLeftIcon} ${!!rightIcon && s.isRightIcon}`}
-          onChange={onChangeValueHandler}
-          onKeyDown={onKeyPressHandler}
-          type={inputType}
-          {...restProps}
-        />
-        <InputIcon className={s.leftIcon} icon={leftIcon} onClick={onLeftIconClickHandler} />
-        <InputIcon
-          className={s.rightIcon}
-          icon={dynamicRightIcon}
-          onClick={type === 'password' ? setVisiblePasswordHandler : onRightIconClickHandler}
-        />
+          tabIndex={0}
+        >
+          <input
+            className={`${s.input} ${!!leftIcon && s.isLeftIcon} ${!!rightIcon && s.isRightIcon}`}
+            onChange={onChangeValueHandler}
+            onKeyDown={onKeyPressHandler}
+            ref={ref}
+            type={inputType}
+            {...restProps}
+          />
+          <InputIcon className={s.leftIcon} icon={leftIcon} onClick={onLeftIconClickHandler} />
+          <InputIcon
+            className={s.rightIcon}
+            icon={dynamicRightIcon}
+            onClick={type === 'password' ? setVisiblePasswordHandler : onRightIconClickHandler}
+          />
+        </div>
+        {!!error && (
+          <Typography as={'span'} variant={TypographyVariant.ERROR}>
+            {error}
+          </Typography>
+        )}
       </div>
-      {!!error && (
-        <Typography as={'span'} variant={TypographyVariant.ERROR}>
-          {error}
-        </Typography>
-      )}
-    </div>
-  )
-}
+    )
+  }
+)
 
 type IconProps = {
   className?: string
