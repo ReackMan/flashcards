@@ -1,0 +1,40 @@
+.root {
+  margin-bottom: 3.6rem;
+
+  .cellName,
+  .cellCardsCount,
+  .cellUpdated {
+    width: 24.5rem;
+  }
+
+  .cellAuthor {
+    width: 28.8rem;
+  }
+
+  .cellImage {
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .image {
+    max-width: 11.8rem;
+    max-height: 4.8rem;
+  }
+
+  .cellIcon {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    height: 3.6rem;
+  }
+
+  .cellIconCover {
+    height: 6.08rem;
+  }
+}
