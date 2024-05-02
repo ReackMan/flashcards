@@ -1,0 +1,12 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.6rem;
+
+  .deckOwnerWrapper {
+    display: flex;
+    gap: 1.6rem;
+    align-items: center;
+  }
+}
