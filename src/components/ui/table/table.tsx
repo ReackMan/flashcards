@@ -1,33 +1,45 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, ReactElement, ReactNode, forwardRef } from 'react'
 
 import { TypographyVariant } from '@/common'
 import { Typography } from '@/components'
 
 import s from './table.module.scss'
 
-const Root = ({ className, ...restProps }: ComponentPropsWithoutRef<'table'>) => {
-  return <table className={`${s.root} ${className}`} {...restProps} />
-}
+const Root = forwardRef<ElementRef<'table'>, ComponentPropsWithoutRef<'table'>>(
+  ({ className, ...restProps }, ref): JSX.Element => {
+    return <table className={`${s.root} ${className}`} ref={ref} {...restProps} />
+  }
+)
 
-const Head = ({ className, ...restProps }: ComponentPropsWithoutRef<'thead'>) => {
-  return <thead className={`${s.thead} ${className}`} {...restProps} />
-}
+const Head = forwardRef<ElementRef<'thead'>, ComponentPropsWithoutRef<'thead'>>(
+  ({ className, ...restProps }, ref): JSX.Element => {
+    return <thead className={`${s.thead} ${className}`} ref={ref} {...restProps} />
+  }
+)
 
-const Body = ({ className, ...restProps }: ComponentPropsWithoutRef<'tbody'>) => {
-  return <tbody className={`${s.body} ${className}`} {...restProps} />
-}
+const Body = forwardRef<ElementRef<'tbody'>, ComponentPropsWithoutRef<'tbody'>>(
+  ({ className, ...restProps }, ref): JSX.Element => {
+    return <tbody className={`${s.body} ${className}`} ref={ref} {...restProps} />
+  }
+)
 
-const Row = ({ className, ...restProps }: ComponentPropsWithoutRef<'tr'>) => {
-  return <tr className={`${s.row} ${className}`} {...restProps} />
-}
+const Row = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'tr'>>(
+  ({ className, ...restProps }, ref): JSX.Element => {
+    return <tr className={`${s.row} ${className}`} ref={ref} {...restProps} />
+  }
+)
 
-const HeadCell = ({ className, ...restProps }: ComponentPropsWithoutRef<'th'>) => {
-  return <th className={`${s.headCell} ${className}`} {...restProps} />
-}
+const HeadCell = forwardRef<ElementRef<'th'>, ComponentPropsWithoutRef<'th'>>(
+  ({ className, ...restProps }, ref): JSX.Element => {
+    return <th className={`${s.headCell} ${className}`} ref={ref} {...restProps} />
+  }
+)
 
-const Cell = ({ className, ...restProps }: ComponentPropsWithoutRef<'td'>) => {
-  return <td className={`${s.cell} ${className}`} {...restProps} />
-}
+const Cell = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
+  ({ className, ...restProps }, ref): JSX.Element => {
+    return <td className={`${s.cell} ${className}`} ref={ref} {...restProps} />
+  }
+)
 
 type EmptyProps = {
   children?: ReactNode
@@ -35,20 +47,25 @@ type EmptyProps = {
   text?: string
 } & ComponentPropsWithoutRef<'div'>
 
-const Empty = ({
-  children,
-  className,
-  text = 'This deck is empty. Click add new deck to fill this deck',
-  ...restProps
-}: EmptyProps) => {
-  return (
-    <div className={`${s.empty} ${className}`} {...restProps}>
-      <Typography className={s.emptyDescription} variant={TypographyVariant.Body1}>
-        {text}
-      </Typography>
-      {children}
-    </div>
-  )
-}
+const Empty = forwardRef<ElementRef<'div'>, EmptyProps>(
+  (
+    {
+      children,
+      className,
+      text = 'This deck is empty. Click add new deck to fill this deck',
+      ...restProps
+    },
+    ref
+  ): ReactElement => {
+    return (
+      <div className={`${s.empty} ${className}`} ref={ref} {...restProps}>
+        <Typography className={s.emptyDescription} variant={TypographyVariant.Body1}>
+          {text}
+        </Typography>
+        {children}
+      </div>
+    )
+  }
+)
 
 export const Table = { Body, Cell, Empty, Head, HeadCell, Root, Row }
