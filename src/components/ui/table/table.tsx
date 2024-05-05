@@ -6,37 +6,37 @@ import { Typography } from '@/components'
 import s from './table.module.scss'
 
 const Root = forwardRef<ElementRef<'table'>, ComponentPropsWithoutRef<'table'>>(
-  ({ className, ...restProps }, ref): JSX.Element => {
+  ({ className, ...restProps }, ref): ReactElement => {
     return <table className={`${s.root} ${className}`} ref={ref} {...restProps} />
   }
 )
 
 const Head = forwardRef<ElementRef<'thead'>, ComponentPropsWithoutRef<'thead'>>(
-  ({ className, ...restProps }, ref): JSX.Element => {
+  ({ className, ...restProps }, ref): ReactElement => {
     return <thead className={`${s.thead} ${className}`} ref={ref} {...restProps} />
   }
 )
 
 const Body = forwardRef<ElementRef<'tbody'>, ComponentPropsWithoutRef<'tbody'>>(
-  ({ className, ...restProps }, ref): JSX.Element => {
+  ({ className, ...restProps }, ref): ReactElement => {
     return <tbody className={`${s.body} ${className}`} ref={ref} {...restProps} />
   }
 )
 
 const Row = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'tr'>>(
-  ({ className, ...restProps }, ref): JSX.Element => {
+  ({ className, ...restProps }, ref): ReactElement => {
     return <tr className={`${s.row} ${className}`} ref={ref} {...restProps} />
   }
 )
 
 const HeadCell = forwardRef<ElementRef<'th'>, ComponentPropsWithoutRef<'th'>>(
-  ({ className, ...restProps }, ref): JSX.Element => {
+  ({ className, ...restProps }, ref): ReactElement => {
     return <th className={`${s.headCell} ${className}`} ref={ref} {...restProps} />
   }
 )
 
 const Cell = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
-  ({ className, ...restProps }, ref): JSX.Element => {
+  ({ className, ...restProps }, ref): ReactElement => {
     return <td className={`${s.cell} ${className}`} ref={ref} {...restProps} />
   }
 )
