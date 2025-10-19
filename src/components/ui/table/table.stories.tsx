@@ -1,6 +1,6 @@
 import { CSSProperties, useMemo, useState } from 'react'
 
-import { ArrowDownIcon, CheckIcon, DeleteIcon, EditIcon, Logo, PlayCircleIcon } from '@/assets'
+import {ArrowDownIcon, CheckIcon, DeleteIcon, EditIcon, logo, PlayCircleIcon} from '@/assets'
 import { TypographyVariant } from '@/common'
 import { Button, IconButton, Rating, Typography } from '@/components'
 import { action } from '@storybook/addon-actions'
@@ -125,7 +125,7 @@ export const Primitives = () => {
         </Table.Row>
         <Table.Row>
           <Table.Cell style={cellPrimitivesWrapper}>
-            <Logo style={logoPrimitives} />
+            <img alt={'Logo'} src={logo} style={logoPrimitives} />
             <Typography variant={TypographyVariant.Body2}>Name</Typography>
           </Table.Cell>
         </Table.Row>
