@@ -1,4 +1,4 @@
 export { Email } from './email'
 export { Loading } from './loading'
-export { Logo } from './logo'
+export * from './logo'
 export { NotFound } from './notFound'
