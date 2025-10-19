@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { Logo, LogoutIcon, PersonIcon } from '@/assets'
+import { logo, LogoutIcon, PersonIcon } from '@/assets'
 import { ButtonVariant, Route, TypographyVariant } from '@/common'
 import {
   Avatar,
@@ -49,7 +49,7 @@ export const Header = forwardRef<ElementRef<'div'>, HeaderProps>(
       <header className={`${s.root} ${className}`} ref={ref}>
         <div className={s.headerContainer}>
           <Button as={Link} to={Route.Main} variant={ButtonVariant.Link}>
-            <Logo className={s.logo} />
+            <img alt={'Logo'} src={logo} height={48} />
           </Button>
           {isLoggedIn && (
             <div className={s.profileInfoWrapper}>

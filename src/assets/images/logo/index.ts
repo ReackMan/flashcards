@@ -1,1 +1,3 @@
-export { default as Logo } from './Logo'
+import logo from './Logo.png'
+
+export { logo }
